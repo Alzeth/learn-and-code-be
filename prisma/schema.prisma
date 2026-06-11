@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Course {
+  id          String   @id  // "py01", "py02" etc — match your existing IDs
+  title       String
+  description String?
+  lessons     CourseLesson[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Lesson {
+  id          String   @id  // "0111-1111-1111" etc — match your href slugs
+  title       String
+  description String?
+  icon        String?  @default("code")
+  date        DateTime?
+  theoryMd    String   // full markdown content from the .md files
+  starterCode String   @default("")
+  courses     CourseLesson[]
+  submissions Submission[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Join table — handles ordering within a course and prev/next navigation
+model CourseLesson {
+  courseId    String
+  lessonId    String
+  position    Int
+  prevLessonId String?
+  nextLessonId String?
+
+  course      Course  @relation(fields: [courseId], references: [id])
+  lesson      Lesson  @relation(fields: [lessonId], references: [id])
+
+  @@id([courseId, lessonId])
+  @@index([courseId, position])
+}
+
+model Submission {
+  id        Int      @id @default(autoincrement())
+  lessonId  String
+  lesson    Lesson   @relation(fields: [lessonId], references: [id])
+  code      String
+  output    String?
+  status    String   @default("pending")
+  passed    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

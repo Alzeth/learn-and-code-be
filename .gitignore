@@ -4,6 +4,25 @@
 /build
 /tmp
 
+# IDEs and editors
+.idea/
+.vscode
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/mcp.json
+.history/*
+
 # Logs
 logs
 *.log
@@ -18,7 +37,10 @@ lerna-debug.log*
 .env.development
 .env.test
 .env.production
+!.env.example
 
 # temp directory
 .temp
 .tmp
+
+/generated/prisma

@@ -1,0 +1,100 @@
+{
+  "courses": [
+    {
+      "id": "py01",
+      "title": "Programming",
+      "description": "Learn the fundamentals of programming, including syntax, logic, and problem-solving techniques. This course is designed for beginners and covers the essential building blocks of coding.",
+      "tableOfContents": [
+        {
+          "id": "0111-1111-1111",
+          "title": "Introduction to Programming",
+          "description": "Overview of programming concepts and history.",
+          "prevLesson": "",
+          "nextLesson": "84e62c63-1bf5-4f12-980c-cc85cdb86f65"
+        },
+        {
+          "id": "0222-2222-2222",
+          "title": "Programming Languages",
+          "description": "Different types of programming languages.",
+          "prevLesson": "e74c2775-6365-4ea1-a167-56c7fc00200a",
+          "nextLesson": "c73cc375-ff96-4d04-b269-1ea87e2c10b4"
+        },
+        {
+          "id": "0333-3333-3333",
+          "title": "Programming Languages",
+          "description": "Best programming languages.",
+          "prevLesson": "84e62c63-1bf5-4f12-980c-cc85cdb86f65",
+          "nextLesson": ""
+        }
+      ]
+    },
+    {
+      "id": "py02",
+      "title": "Variables",
+      "description": "Understand how to store and manage data in your programs using variables. This course covers variable types, naming conventions, and best practices for data storage.",
+      "tableOfContents": [
+        {
+          "id": "0000-1111-1113",
+          "title": "What are Variables?",
+          "description": "Definition and purpose of variables."
+        },
+        {
+          "id": "0000-1111-1114",
+          "title": "Variable Types",
+          "description": "Different data types for variables."
+        }
+      ]
+    },
+    {
+      "id": "py03",
+      "title": "Conditions and Loops",
+      "description": "Master the control flow of your programs with conditional statements and loops. Learn how to make decisions and repeat actions efficiently.",
+      "tableOfContents": [
+        {
+          "id": "0000-1111-1115",
+          "title": "Conditional Statements",
+          "description": "Using if, else, and elif statements."
+        },
+        {
+          "id": "0000-1111-1116",
+          "title": "Loops",
+          "description": "For and while loops explained."
+        }
+      ]
+    },
+    {
+      "id": "py04",
+      "title": "Functions",
+      "description": "Discover how to organize your code into reusable blocks with functions. This course covers function definition, arguments, return values, and scope.",
+      "tableOfContents": [
+        {
+          "id": "0000-1111-1117",
+          "title": "Defining Functions",
+          "description": "How to define and call functions."
+        },
+        {
+          "id": "0000-1111-1118",
+          "title": "Function Arguments",
+          "description": "Passing data to functions."
+        }
+      ]
+    },
+    {
+      "id": "py05",
+      "title": "Classes and Objects",
+      "description": "Dive into object-oriented programming with classes and objects. Learn how to model real-world entities, encapsulate data, and create reusable code structures.",
+      "tableOfContents": [
+        {
+          "id": "0000-1111-1119",
+          "title": "Introduction to OOP",
+          "description": "Basics of Object Oriented Programming."
+        },
+        {
+          "id": "0000-1111-1120",
+          "title": "Creating Classes and Objects",
+          "description": "How to define classes and create objects."
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "name": "learn-and-code-be",
   "homepage": "https://alzeth.github.io/learn-and-code/",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Learning platform with code editor",
   "repository": {
     "type": "git",
@@ -11,6 +11,9 @@
   "contributors": [
     "Igor Ovcharenko <mr.alzeth@gmail.com>"
   ],
+  "engines": {
+    "node": ">=22"
+  },
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

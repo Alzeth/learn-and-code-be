@@ -7,7 +7,7 @@ datasource db {
 }
 
 model Course {
-  id          String   @id  // "py01", "py02" etc — match your existing IDs
+  id          String   @id  // "py01", "py02" etc
   title       String
   description String?
   lessons     CourseLesson[]
@@ -16,7 +16,7 @@ model Course {
 }
 
 model Lesson {
-  id          String   @id  // "0111-1111-1111" etc — match your href slugs
+  id          String   @id  // "0111-1111-1111" etc
   title       String
   description String?
   icon        String?  @default("code")

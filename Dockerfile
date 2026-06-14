@@ -9,6 +9,7 @@ COPY . .
 
 RUN npx prisma generate
 RUN npm run build
+RUN ls -la /app/dist/ || echo "dist folder is empty or missing"
 
 EXPOSE 3001
 

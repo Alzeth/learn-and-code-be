@@ -13,4 +13,4 @@ RUN ls -la /app/dist/ || echo "dist folder is empty or missing"
 
 EXPOSE 3001
 
-CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main.js"]
+CMD ["sh", "-c", "npx prisma migrate deploy && ls -la /app/dist/ && node dist/main.js"]

@@ -1,7 +1,7 @@
 {
   "name": "learn-and-code-be",
   "homepage": "https://alzeth.github.io/learn-and-code/",
-  "version": "1.6.2",
+  "version": "2.0.0",
   "description": "Learning platform with code editor",
   "repository": {
     "type": "git",
@@ -41,7 +41,8 @@
     "@prisma/client": "^7.8.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
-    "tsx": "^4.22.4"
+    "tsx": "^4.22.4",
+    "uuid": "^14.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

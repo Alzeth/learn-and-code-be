@@ -1,0 +1,4 @@
+$kind: http-request
+url: https://learn-and-code-be-production.up.railway.app/courses
+method: GET
+order: 1782117932870

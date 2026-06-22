@@ -41,8 +41,7 @@
     "@prisma/client": "^7.8.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1",
-    "tsx": "^4.22.4",
-    "uuid": "^14.0.1"
+    "tsx": "^4.22.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

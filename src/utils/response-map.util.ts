@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from 'uuid';
 import {
   ResponseEntity,
   ResponseErrorEntity,
@@ -13,7 +12,7 @@ export const responseMapping = <T>(
     data: data ?? null,
     error: error ?? null,
     meta: {
-      requestId: uuidv4(),
+      requestId: crypto.randomUUID(),
       timestamp: new Date().toISOString(),
     },
   };

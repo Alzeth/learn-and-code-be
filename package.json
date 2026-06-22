@@ -33,10 +33,10 @@
     "seed": "ts-node --project prisma/tsconfig.seed.json prisma/seed.ts"
   },
   "dependencies": {
-    "@nestjs/common": "^11.0.1",
+    "@nestjs/common": "^11.1.27",
     "@nestjs/config": "^4.0.4",
-    "@nestjs/core": "^11.0.1",
-    "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/core": "^11.1.27",
+    "@nestjs/platform-express": "^11.1.27",
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "reflect-metadata": "^0.2.2",
@@ -48,7 +48,7 @@
     "@eslint/js": "^10.0.1",
     "@nestjs/cli": "^11.0.23",
     "@nestjs/schematics": "^11.1.0",
-    "@nestjs/testing": "^11.0.1",
+    "@nestjs/testing": "^11.1.27",
     "@types/express": "^5.0.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^26.0.0",

@@ -1,34 +1,63 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
+import { CourseDto, CoursesDto } from './dto/course.dto';
 
 @Injectable()
 export class CoursesService {
   constructor(private prisma: PrismaService) {}
 
-  findAll() {
-    return this.prisma.course.findMany({
+  async findAll(): Promise<CoursesDto> {
+    const courses = await this.prisma.course.findMany({
       include: {
         lessons: {
-          include: {
-            lesson: true,
-          },
+          include: { lesson: true },
           orderBy: { position: 'asc' },
         },
       },
     });
+
+    return {
+      courses: courses.map(
+        (course): CourseDto => ({
+          id: course.id,
+          title: course.title,
+          description: course.description,
+          tableOfContents: course.lessons.map((cl) => ({
+            id: cl.lesson.id,
+            title: cl.lesson.title,
+            description: cl.lesson.description,
+            prevLesson: cl.prevLessonId,
+            nextLesson: cl.nextLessonId,
+          })),
+        }),
+      ),
+    };
   }
 
-  findOne(id: string) {
-    return this.prisma.course.findUnique({
+  async findOne(id: string): Promise<CourseDto | null> {
+    const course = await this.prisma.course.findUnique({
       where: { id },
       include: {
         lessons: {
-          include: {
-            lesson: true,
-          },
+          include: { lesson: true },
           orderBy: { position: 'asc' },
         },
       },
     });
+
+    if (!course) return null;
+
+    return {
+      id: course.id,
+      title: course.title,
+      description: course.description,
+      tableOfContents: course.lessons.map((cl) => ({
+        id: cl.lesson.id,
+        title: cl.lesson.title,
+        description: cl.lesson.description,
+        prevLesson: cl.prevLessonId,
+        nextLesson: cl.nextLessonId,
+      })),
+    };
   }
 }

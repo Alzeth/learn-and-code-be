@@ -1,0 +1,5 @@
+$kind: http-request
+name: Course by ID
+url: "{{base_url}}/courses/{{id}}"
+method: GET
+order: 3071782723961841

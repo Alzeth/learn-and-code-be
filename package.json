@@ -1,7 +1,7 @@
 {
   "name": "learn-and-code-be",
   "homepage": "https://alzeth.github.io/learn-and-code/",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Learning platform with code editor",
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
   },
   "private": true,
   "license": "UNLICENSED",
+  "packageManager": "npm@10.9.8",
   "scripts": {
     "build": "nest build",
     "format:check": "prettier --check \"src/**/*.ts\"",
@@ -37,6 +38,7 @@
     "@nestjs/config": "^4.0.4",
     "@nestjs/core": "^11.1.27",
     "@nestjs/platform-express": "^11.1.27",
+    "@nestjs/swagger": "^11.4.4",
     "@prisma/adapter-pg": "^7.8.0",
     "@prisma/client": "^7.8.0",
     "reflect-metadata": "^0.2.2",

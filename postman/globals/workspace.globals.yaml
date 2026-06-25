@@ -1,2 +1,5 @@
 name: Globals
-values: []
+values:
+  - key: base_url
+    value: ''
+    enabled: true

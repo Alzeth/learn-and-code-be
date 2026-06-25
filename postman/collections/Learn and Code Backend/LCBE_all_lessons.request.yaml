@@ -1,0 +1,5 @@
+$kind: http-request
+name: All Lessons
+url: "{{base_url}}/lessons"
+method: GET
+order: 595704756704130

@@ -1,10 +1,16 @@
 import { Module } from '@nestjs/common';
-import { TerminusModule } from '@nestjs/terminus';
+import { PrismaHealthIndicator, TerminusModule } from '@nestjs/terminus';
+
+import { TerminusLogger } from 'src/logger/terminus-logger.service';
 import { HealthController } from './health.controller';
-import { PrismaHealthIndicator } from './prisma.health';
 
 @Module({
-  imports: [TerminusModule],
+  imports: [
+    TerminusModule.forRoot({
+      logger: TerminusLogger,
+      errorLogStyle: 'pretty',
+    }),
+  ],
   controllers: [HealthController],
   providers: [PrismaHealthIndicator],
 })

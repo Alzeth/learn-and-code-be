@@ -109,15 +109,16 @@ async function main() {
         where: {
           courseId_lessonId: { courseId: course.id, lessonId: entry.id },
         },
-        update: {},
+        update: { position, prevLessonId, nextLessonId },
         create: {
           courseId: course.id,
           lessonId: entry.id,
-          position: position++,
+          position,
           prevLessonId,
           nextLessonId,
         },
       });
+      position++;
       console.log(`  ✓ CourseLesson: ${course.id} → ${entry.id}`);
     }
   }

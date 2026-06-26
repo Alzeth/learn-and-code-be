@@ -10,20 +10,20 @@
           "title": "Introduction to Programming",
           "description": "Overview of programming concepts and history.",
           "prevLesson": "",
-          "nextLesson": "84e62c63-1bf5-4f12-980c-cc85cdb86f65"
+          "nextLesson": "0222-2222-2222"
         },
         {
           "id": "0222-2222-2222",
           "title": "Programming Languages",
           "description": "Different types of programming languages.",
-          "prevLesson": "e74c2775-6365-4ea1-a167-56c7fc00200a",
-          "nextLesson": "c73cc375-ff96-4d04-b269-1ea87e2c10b4"
+          "prevLesson": "0111-1111-1111",
+          "nextLesson": "0333-3333-3333"
         },
         {
           "id": "0333-3333-3333",
           "title": "Programming Languages",
           "description": "Best programming languages.",
-          "prevLesson": "84e62c63-1bf5-4f12-980c-cc85cdb86f65",
+          "prevLesson": "0222-2222-2222",
           "nextLesson": ""
         }
       ]

@@ -5,11 +5,13 @@ import {
   NotFoundException,
   Param,
 } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { LessonsService } from './lessons.service';
 import { responseMapping } from 'src/utils/response-map.util';
 import { LessonDto, LessonsResponseDto } from './dto/lesson.dto';
 import { ResponseEntity } from 'src/interfaces/response.entity';
 
+@ApiTags('lessons')
 @Controller('lessons')
 export class LessonsController {
   constructor(private readonly lessonsService: LessonsService) {}

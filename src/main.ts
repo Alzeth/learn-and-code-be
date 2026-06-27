@@ -20,7 +20,7 @@ async function bootstrap() {
     .setTitle('Learn and Code')
     .setDescription('Learn and Code API description')
     .setVersion('1.0')
-    .addTag('learn-and-code')
+    .addBearerAuth()
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, documentFactory);

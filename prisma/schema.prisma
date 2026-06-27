@@ -25,6 +25,7 @@ model Lesson {
   starterCode String   @default("")
   courses     CourseLesson[]
   submissions Submission[]
+  progress    UserProgress[]
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
@@ -53,4 +54,25 @@ model Submission {
   status    String   @default("pending")
   passed    Boolean  @default(false)
   createdAt DateTime @default(now())
+}
+
+model User {
+  id           String         @id @default(cuid())
+  email        String         @unique
+  passwordHash String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  progress     UserProgress[]
+}
+
+model UserProgress {
+  id          Int       @id @default(autoincrement())
+  userId      String
+  lessonId    String
+  completed   Boolean   @default(false)
+  completedAt DateTime?
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lesson      Lesson    @relation(fields: [lessonId], references: [id])
+
+  @@unique([userId, lessonId])
 }

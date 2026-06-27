@@ -13,7 +13,18 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(config: ConfigService) {
     const secret = config.get<string>('JWT_SECRET');
     if (!secret) {
-      console.log('111 config=', config);
+      console.error(
+        '[JwtStrategy] JWT_SECRET missing.',
+        config.get<string>('JWT_SECRET'),
+      );
+      console.error(
+        '[JwtStrategy] process.env.JWT_SECRET =',
+        process.env.JWT_SECRET,
+      );
+      console.error(
+        '[JwtStrategy] Available env keys:',
+        Object.keys(process.env).join(', '),
+      );
       throw new Error('JWT_SECRET environment variable is not set');
     }
     super({

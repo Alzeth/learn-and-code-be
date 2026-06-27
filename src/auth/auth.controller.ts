@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
@@ -10,6 +11,7 @@ import { responseMapping } from 'src/utils/response-map.util';
 import type { ResponseEntity } from 'src/interfaces/response.entity';
 import { UserDto } from '../users/dto/user.dto';
 
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -26,6 +28,7 @@ export class AuthController {
     return responseMapping(await this.authService.login(dto), null);
   }
 
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('me')
   me(@CurrentUser() user: CurrentUserPayload): ResponseEntity<UserDto> {

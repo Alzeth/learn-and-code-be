@@ -6,6 +6,7 @@ import {
   Post,
   UseGuards,
 } from '@nestjs/common';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { ProgressService } from './progress.service';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
@@ -14,6 +15,8 @@ import { responseMapping } from 'src/utils/response-map.util';
 import type { ResponseEntity } from 'src/interfaces/response.entity';
 import type { LessonProgressDto, UserProgressDto } from './dto/progress.dto';
 
+@ApiBearerAuth()
+@ApiTags('progress')
 @UseGuards(JwtAuthGuard)
 @Controller('progress')
 export class ProgressController {

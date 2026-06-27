@@ -1,9 +1,11 @@
 import { Controller, Get, Param, NotFoundException } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CoursesService } from './courses.service';
 import { CourseDto, CoursesDto } from './dto/course.dto';
 import { responseMapping } from 'src/utils/response-map.util';
 import { ResponseEntity } from 'src/interfaces/response.entity';
 
+@ApiTags('courses')
 @Controller('courses')
 export class CoursesController {
   constructor(private readonly coursesService: CoursesService) {}

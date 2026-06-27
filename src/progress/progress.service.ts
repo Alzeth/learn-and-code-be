@@ -81,11 +81,14 @@ export class ProgressService {
     return this.toDto(row);
   }
 
-  private toDto(row: {
-    lessonId: string;
-    completed: boolean;
-    completedAt: Date | null;
-  }): LessonProgressDto {
+  private toDto(
+    this: void,
+    row: {
+      lessonId: string;
+      completed: boolean;
+      completedAt: Date | null;
+    },
+  ): LessonProgressDto {
     return {
       lessonId: row.lessonId,
       completed: row.completed,

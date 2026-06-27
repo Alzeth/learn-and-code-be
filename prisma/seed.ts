@@ -61,7 +61,7 @@ async function main() {
 
     await prisma.lesson.upsert({
       where: { id: lesson.href },
-      update: {},
+      update: { theoryMd },
       create: {
         id: lesson.href,
         title: lesson.title,

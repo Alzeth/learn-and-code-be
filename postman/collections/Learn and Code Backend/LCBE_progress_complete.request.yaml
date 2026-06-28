@@ -1,8 +1,0 @@
-$kind: http-request
-name: Progress - Complete Lesson
-url: "{{base_url}}/progress/lessons/{{id}}/complete"
-method: POST
-headers:
-  - key: Authorization
-    value: "Bearer {{access_token}}"
-order: 4000000000000006

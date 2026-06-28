@@ -3,6 +3,7 @@ name: Progress - All
 url: "{{base_url}}/progress"
 method: GET
 headers:
-  - key: Authorization
-    value: "Bearer {{access_token}}"
-order: 4000000000000004
+  Authorization: Bearer {{access_token}}
+auth:
+  type: noauth
+order: 4496357619619231

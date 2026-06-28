@@ -1,0 +1,7 @@
+$kind: http-request
+name: Progress - Lessons
+url: "{{base_url}}/progress/lessons/{{id}}"
+method: GET
+headers:
+  Authorization: Bearer {{access_token}}
+order: 4500946932471478

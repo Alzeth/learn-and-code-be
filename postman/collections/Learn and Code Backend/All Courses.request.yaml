@@ -2,4 +2,4 @@ $kind: http-request
 name: All Courses
 url: "{{base_url}}/courses"
 method: GET
-order: 1782373531372
+order: 4417025486288408

@@ -17,6 +17,10 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v4
 
+      - name: Extract version 📦
+        id: version
+        run: echo "value=v$(jq -r '.version' package.json)" >> "$GITHUB_OUTPUT"
+
       - name: Create GitHub deployment 📌
         id: deployment
         run: |
@@ -24,7 +28,7 @@ jobs:
             -H "Authorization: Bearer ${GITHUB_TOKEN}" \
             -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/${GITHUB_REPOSITORY}/deployments" \
-            -d "{\"ref\":\"${GITHUB_SHA}\",\"environment\":\"production\",\"auto_merge\":false,\"required_contexts\":[]}")
+            -d "{\"ref\":\"${GITHUB_SHA}\",\"environment\":\"${{ steps.version.outputs.value }}\",\"auto_merge\":false,\"required_contexts\":[]}")
           echo "$response"
           id=$(echo "$response" | jq -r '.id')
           [ "$id" = "null" ] && echo "Failed to create deployment" && exit 1
@@ -47,7 +51,7 @@ jobs:
             -H "Authorization: Bearer ${GITHUB_TOKEN}" \
             -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/${GITHUB_REPOSITORY}/deployments/${{ steps.deployment.outputs.id }}/statuses" \
-            -d "{\"state\":\"$state\",\"environment\":\"production\"}"
+            -d "{\"state\":\"$state\",\"environment\":\"${{ steps.version.outputs.value }}\"}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           JOB_STATUS: ${{ job.status }}

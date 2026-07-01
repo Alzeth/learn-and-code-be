@@ -1,0 +1,83 @@
+name: Bump version on Dependabot PR 🤖
+
+# pull_request_target gives write access to GITHUB_TOKEN so we can push back
+# to the PR branch. Safe here because the job is gated on dependabot[bot] actor.
+on:
+  pull_request_target:
+    types: [opened, synchronize]
+
+jobs:
+  bump-version:
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout PR branch 🛎️
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Detect bump type 🔍
+        id: detect
+        env:
+          BASE_REF: ${{ github.base_ref }}
+        run: |
+          node - <<'EOF'
+          const { execSync } = require('child_process');
+          const fs = require('fs');
+
+          execSync(`git fetch origin ${process.env.BASE_REF}`);
+
+          const basePkg = JSON.parse(execSync(`git show origin/${process.env.BASE_REF}:package.json`).toString());
+          const headPkg = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
+
+          // Skip if app version was already bumped on this branch (e.g. re-run)
+          if (headPkg.version !== basePkg.version) {
+            console.log(`App version already bumped: ${basePkg.version} → ${headPkg.version}`);
+            fs.appendFileSync(process.env.GITHUB_OUTPUT, 'skip=true\n');
+            process.exit(0);
+          }
+
+          const strip = v => (v || '').replace(/^[^0-9]*/, '');
+          const parse = v => { const p = strip(v).split('.').map(Number); return { major: p[0]||0, minor: p[1]||0, patch: p[2]||0 }; };
+          const bumpLevel = (a, b) => {
+            const [o, n] = [parse(a), parse(b)];
+            return n.major > o.major ? 'major' : n.minor > o.minor ? 'minor' : 'patch';
+          };
+
+          const prio = { major: 2, minor: 1, patch: 0 };
+          let highest = 'patch';
+
+          const baseDeps = { ...basePkg.dependencies, ...basePkg.devDependencies };
+          const headDeps = { ...headPkg.dependencies, ...headPkg.devDependencies };
+
+          for (const [dep, oldVer] of Object.entries(baseDeps)) {
+            const newVer = headDeps[dep];
+            if (!newVer || newVer === oldVer) continue;
+            const l = bumpLevel(oldVer, newVer);
+            if (prio[l] > prio[highest]) highest = l;
+          }
+
+          console.log(`Bump type: ${highest}`);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `skip=false\ntype=${highest}\n`);
+          EOF
+
+      - name: Bump package.json version 📦
+        if: steps.detect.outputs.skip != 'true'
+        env:
+          BUMP_TYPE: ${{ steps.detect.outputs.type }}
+        run: npm version $BUMP_TYPE --no-git-tag-version
+
+      - name: Commit and push ✅
+        if: steps.detect.outputs.skip != 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: bump version (${{ steps.detect.outputs.type }})"
+          git push

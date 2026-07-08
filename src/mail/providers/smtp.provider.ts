@@ -1,7 +1,7 @@
 import * as nodemailer from 'nodemailer';
 import type { Transporter } from 'nodemailer';
 import type { ConfigService } from '@nestjs/config';
-import type { IEmailProvider, EmailMessage } from '../interfaces/email-provider.interface.js';
+import type { IEmailProvider, EmailMessage } from '../interfaces/email-provider.interface';
 
 export class SmtpProvider implements IEmailProvider {
   private readonly transporter: Transporter;

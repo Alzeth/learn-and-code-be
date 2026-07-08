@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { MailService } from './mail.service.js';
-import { EMAIL_PROVIDER } from './interfaces/email-provider.interface.js';
-import { ResendProvider } from './providers/resend.provider.js';
-import { SmtpProvider } from './providers/smtp.provider.js';
+import { MailService } from './mail.service';
+import { EMAIL_PROVIDER } from './interfaces/email-provider.interface';
+import { ResendProvider } from './providers/resend.provider';
+import { SmtpProvider } from './providers/smtp.provider';
 
 @Module({
   providers: [

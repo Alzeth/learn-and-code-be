@@ -1,20 +1,26 @@
 import {
+  BadRequestException,
   ConflictException,
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
+import { createHash, randomBytes } from 'crypto';
 import { UsersService } from '../users/users.service';
+import { MailService } from '../mail/mail.service';
 import { RegisterDto } from './dto/register.dto';
 import { LoginDto } from './dto/login.dto';
 import { AuthResponseDto } from './dto/auth-response.dto';
+import type { ForgotPasswordDto } from './dto/forgot-password.dto';
+import type { ResetPasswordDto } from './dto/reset-password.dto';
 
 @Injectable()
 export class AuthService {
   constructor(
     private users: UsersService,
     private jwt: JwtService,
+    private mail: MailService,
   ) {}
 
   async register(dto: RegisterDto): Promise<AuthResponseDto> {
@@ -41,6 +47,27 @@ export class AuthService {
       accessToken: this.signToken(user.id, user.email),
       user: { id: user.id, email: user.email },
     };
+  }
+
+  async forgotPassword(dto: ForgotPasswordDto): Promise<void> {
+    const user = await this.users.findByEmail(dto.email);
+    if (!user) return; // silent: don't reveal whether email exists
+
+    const token = randomBytes(32).toString('hex');
+    const tokenHash = createHash('sha256').update(token).digest('hex');
+    const expiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
+
+    await this.users.setResetToken(user.id, tokenHash, expiresAt);
+    await this.mail.sendPasswordReset(user.email, token);
+  }
+
+  async resetPassword(dto: ResetPasswordDto): Promise<void> {
+    const tokenHash = createHash('sha256').update(dto.token).digest('hex');
+    const user = await this.users.findByResetToken(tokenHash);
+    if (!user) throw new BadRequestException('Invalid or expired reset token');
+
+    const passwordHash = await bcrypt.hash(dto.newPassword, 10);
+    await this.users.updatePasswordAndClearToken(user.id, passwordHash);
   }
 
   private signToken(userId: string, email: string): string {

@@ -1,4 +1,5 @@
 process.env.JWT_SECRET = 'test-secret';
+process.env.RESEND_API_KEY = 're_test';
 
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';

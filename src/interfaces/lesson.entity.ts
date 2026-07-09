@@ -1,4 +1,4 @@
-import { CourseLessonEntity } from './courses.entity';
+import type { CourseLessonEntity } from './courses.entity';
 
 export interface LessonEntity {
   id: string;

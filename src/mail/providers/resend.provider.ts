@@ -1,6 +1,7 @@
-import { Resend } from 'resend';
 import type { ConfigService } from '@nestjs/config';
-import type { IEmailProvider, EmailMessage } from '../interfaces/email-provider.interface';
+import { Resend } from 'resend';
+
+import type { EmailMessage, IEmailProvider } from '../interfaces/email-provider.interface';
 
 export class ResendProvider implements IEmailProvider {
   private readonly client: Resend;

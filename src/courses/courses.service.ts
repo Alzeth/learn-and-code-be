@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+
 import { PrismaService } from '../prisma/prisma.service';
 import { CourseDto, CoursesDto } from './dto/course.dto';
 
@@ -17,20 +18,18 @@ export class CoursesService {
     });
 
     return {
-      courses: courses.map(
-        (course): CourseDto => ({
-          id: course.id,
-          title: course.title,
-          description: course.description,
-          tableOfContents: course.lessons.map((cl) => ({
-            id: cl.lesson.id,
-            title: cl.lesson.title,
-            description: cl.lesson.description,
-            prevLesson: cl.prevLessonId,
-            nextLesson: cl.nextLessonId,
-          })),
-        }),
-      ),
+      courses: courses.map((course): CourseDto => ({
+        id: course.id,
+        title: course.title,
+        description: course.description,
+        tableOfContents: course.lessons.map((cl) => ({
+          id: cl.lesson.id,
+          title: cl.lesson.title,
+          description: cl.lesson.description,
+          prevLesson: cl.prevLessonId,
+          nextLesson: cl.nextLessonId,
+        })),
+      })),
     };
   }
 

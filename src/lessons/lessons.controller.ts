@@ -1,15 +1,10 @@
-import {
-  Controller,
-  Get,
-  Header,
-  NotFoundException,
-  Param,
-} from '@nestjs/common';
+import { Controller, Get, Header, NotFoundException, Param } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { LessonsService } from './lessons.service';
-import { responseMapping } from 'src/utils/response-map.util';
-import { LessonDto, LessonsResponseDto } from './dto/lesson.dto';
 import { ResponseEntity } from 'src/interfaces/response.entity';
+import { responseMapping } from 'src/utils/response-map.util';
+
+import { LessonDto, LessonsResponseDto } from './dto/lesson.dto';
+import { LessonsService } from './lessons.service';
 
 @ApiTags('lessons')
 @Controller('lessons')
@@ -25,9 +20,7 @@ export class LessonsController {
   async findOne(@Param('id') id: string): Promise<ResponseEntity<LessonDto>> {
     const lesson = await this.lessonsService.findOne(id);
     if (!lesson)
-      throw new NotFoundException(
-        responseMapping(null, { message: `Lesson ${id} not found` }),
-      );
+      throw new NotFoundException(responseMapping(null, { message: `Lesson ${id} not found` }));
     return responseMapping(lesson, null);
   }
 
@@ -36,9 +29,7 @@ export class LessonsController {
   async findTheory(@Param('id') id: string): Promise<ResponseEntity<string>> {
     const theory = await this.lessonsService.findTheory(id);
     if (theory === null)
-      throw new NotFoundException(
-        responseMapping(null, { message: `Lesson ${id} not found` }),
-      );
+      throw new NotFoundException(responseMapping(null, { message: `Lesson ${id} not found` }));
     return responseMapping(theory, null);
   }
 }

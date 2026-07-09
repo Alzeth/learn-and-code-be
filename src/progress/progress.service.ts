@@ -1,10 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+
 import { PrismaService } from '../prisma/prisma.service';
-import {
-  CourseProgressDto,
-  LessonProgressDto,
-  UserProgressDto,
-} from './dto/progress.dto';
+import { CourseProgressDto, LessonProgressDto, UserProgressDto } from './dto/progress.dto';
 
 @Injectable()
 export class ProgressService {
@@ -18,17 +15,13 @@ export class ProgressService {
       }),
     ]);
 
-    const completedSet = new Set(
-      progressRows.filter((p) => p.completed).map((p) => p.lessonId),
-    );
+    const completedSet = new Set(progressRows.filter((p) => p.completed).map((p) => p.lessonId));
 
     const lessons: LessonProgressDto[] = progressRows.map(this.toDto);
 
     const courseProgress: CourseProgressDto[] = courses.map((course) => {
       const total = course.lessons.length;
-      const completed = course.lessons.filter((cl) =>
-        completedSet.has(cl.lessonId),
-      ).length;
+      const completed = course.lessons.filter((cl) => completedSet.has(cl.lessonId)).length;
       return {
         courseId: course.id,
         totalLessons: total,
@@ -40,10 +33,7 @@ export class ProgressService {
     return { lessons, courses: courseProgress };
   }
 
-  async getLessonProgress(
-    userId: string,
-    lessonId: string,
-  ): Promise<LessonProgressDto> {
+  async getLessonProgress(userId: string, lessonId: string): Promise<LessonProgressDto> {
     const row = await this.prisma.userProgress.findUnique({
       where: { userId_lessonId: { userId, lessonId } },
     });
@@ -53,24 +43,19 @@ export class ProgressService {
         where: { id: lessonId },
         select: { id: true },
       });
-      if (!lessonExists)
-        throw new NotFoundException(`Lesson ${lessonId} not found`);
+      if (!lessonExists) throw new NotFoundException(`Lesson ${lessonId} not found`);
       return { lessonId, completed: false, completedAt: null };
     }
 
     return this.toDto(row);
   }
 
-  async markLessonCompleted(
-    userId: string,
-    lessonId: string,
-  ): Promise<LessonProgressDto> {
+  async markLessonCompleted(userId: string, lessonId: string): Promise<LessonProgressDto> {
     const lessonExists = await this.prisma.lesson.findUnique({
       where: { id: lessonId },
       select: { id: true },
     });
-    if (!lessonExists)
-      throw new NotFoundException(`Lesson ${lessonId} not found`);
+    if (!lessonExists) throw new NotFoundException(`Lesson ${lessonId} not found`);
 
     const row = await this.prisma.userProgress.upsert({
       where: { userId_lessonId: { userId, lessonId } },

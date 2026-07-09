@@ -1,7 +1,7 @@
 {
   "name": "learn-and-code-be",
   "homepage": "https://alzeth.github.io/learn-and-code/",
-  "version": "6.1.0",
+  "version": "6.2.0",
   "description": "Learning platform with code editor",
   "repository": {
     "type": "git",
@@ -31,7 +31,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "seed": "ts-node --project prisma/tsconfig.seed.json prisma/seed.ts"
+    "seed": "ts-node --project prisma/tsconfig.seed.json prisma/seed.ts",
+    "prepare": "husky"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.28",
@@ -72,8 +73,11 @@
     "eslint": "^10.6.0",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.2",
+    "eslint-plugin-simple-import-sort": "^13.0.0",
     "globals": "^17.7.0",
+    "husky": "^9.1.7",
     "jest": "^30.0.0",
+    "lint-staged": "^17.0.8",
     "prettier": "^3.9.4",
     "prisma": "^7.8.0",
     "source-map-support": "^0.5.21",
@@ -84,6 +88,12 @@
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.62.1"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   },
   "jest": {
     "moduleFileExtensions": [

@@ -57,12 +57,14 @@ model Submission {
 }
 
 model User {
-  id           String         @id @default(cuid())
-  email        String         @unique
-  passwordHash String
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
-  progress     UserProgress[]
+  id                          String         @id @default(cuid())
+  email                       String         @unique
+  passwordHash                String
+  passwordResetToken          String?
+  passwordResetTokenExpiresAt DateTime?
+  createdAt                   DateTime       @default(now())
+  updatedAt                   DateTime       @updatedAt
+  progress                    UserProgress[]
 }
 
 model UserProgress {

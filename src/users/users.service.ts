@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
 import type { User } from '@prisma/client';
+
+import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
 export class UsersService {
@@ -21,7 +22,10 @@ export class UsersService {
   async setResetToken(userId: string, tokenHash: string, expiresAt: Date): Promise<void> {
     await this.prisma.user.update({
       where: { id: userId },
-      data: { passwordResetToken: tokenHash, passwordResetTokenExpiresAt: expiresAt },
+      data: {
+        passwordResetToken: tokenHash,
+        passwordResetTokenExpiresAt: expiresAt,
+      },
     });
   }
 

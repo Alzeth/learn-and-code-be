@@ -1,9 +1,10 @@
-import { Controller, Get, Param, NotFoundException } from '@nestjs/common';
+import { Controller, Get, NotFoundException, Param } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { ResponseEntity } from 'src/interfaces/response.entity';
+import { responseMapping } from 'src/utils/response-map.util';
+
 import { CoursesService } from './courses.service';
 import { CourseDto, CoursesDto } from './dto/course.dto';
-import { responseMapping } from 'src/utils/response-map.util';
-import { ResponseEntity } from 'src/interfaces/response.entity';
 
 @ApiTags('courses')
 @Controller('courses')
@@ -19,9 +20,7 @@ export class CoursesController {
   async findOne(@Param('id') id: string): Promise<ResponseEntity<CourseDto>> {
     const course = await this.coursesService.findOne(id);
     if (!course)
-      throw new NotFoundException(
-        responseMapping(null, { message: `Course ${id} not found` }),
-      );
+      throw new NotFoundException(responseMapping(null, { message: `Course ${id} not found` }));
     return responseMapping(course, null);
   }
 }

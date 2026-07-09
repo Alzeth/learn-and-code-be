@@ -7,12 +7,13 @@ import {
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcryptjs';
 import { createHash, randomBytes } from 'crypto';
-import { UsersService } from '../users/users.service';
+
 import { MailService } from '../mail/mail.service';
-import { RegisterDto } from './dto/register.dto';
-import { LoginDto } from './dto/login.dto';
+import { UsersService } from '../users/users.service';
 import { AuthResponseDto } from './dto/auth-response.dto';
 import type { ForgotPasswordDto } from './dto/forgot-password.dto';
+import { LoginDto } from './dto/login.dto';
+import { RegisterDto } from './dto/register.dto';
 import type { ResetPasswordDto } from './dto/reset-password.dto';
 
 @Injectable()
@@ -51,11 +52,11 @@ export class AuthService {
 
   async forgotPassword(dto: ForgotPasswordDto): Promise<void> {
     const user = await this.users.findByEmail(dto.email);
-    if (!user) return; // silent: don't reveal whether email exists
+    if (!user) return;
 
     const token = randomBytes(32).toString('hex');
     const tokenHash = createHash('sha256').update(token).digest('hex');
-    const expiresAt = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
+    const expiresAt = new Date(Date.now() + 15 * 60 * 1000);
 
     await this.users.setResetToken(user.id, tokenHash, expiresAt);
     await this.mail.sendPasswordReset(user.email, token);

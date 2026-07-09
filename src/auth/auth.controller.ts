@@ -1,9 +1,9 @@
 import { Body, Controller, Get, HttpCode, HttpStatus, Post, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
-import type { ResponseEntity } from 'src/interfaces/response.entity';
-import { responseMapping } from 'src/utils/response-map.util';
 
+import type { ResponseEntity } from '../interfaces/response.entity';
 import { UserDto } from '../users/dto/user.dto';
+import { responseMapping } from '../utils/response-map.util';
 import { AuthService } from './auth.service';
 import type { CurrentUserPayload } from './decorators/current-user.decorator';
 import { CurrentUser } from './decorators/current-user.decorator';

@@ -1,8 +1,8 @@
 import { Controller, Get, NotFoundException, Param } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { ResponseEntity } from 'src/interfaces/response.entity';
-import { responseMapping } from 'src/utils/response-map.util';
 
+import { ResponseEntity } from '../interfaces/response.entity';
+import { responseMapping } from '../utils/response-map.util';
 import { CoursesService } from './courses.service';
 import { CourseDto, CoursesDto } from './dto/course.dto';
 

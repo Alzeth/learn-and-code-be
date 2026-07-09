@@ -1,9 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "npx prisma generate && npm run build && npx prisma migrate deploy",
+  "buildCommand": "npx prisma generate && npx prisma migrate deploy",
   "functions": {
     "api/index.ts": {
-      "includeFiles": "dist/**",
       "memory": 1024,
       "maxDuration": 30
     }

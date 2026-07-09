@@ -30,7 +30,13 @@ function initNest(): Promise<void> {
       .addBearerAuth()
       .build();
     const documentFactory = () => SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('api', app, documentFactory);
+    SwaggerModule.setup('api', app, documentFactory, {
+      customCssUrl: 'https://unpkg.com/swagger-ui-dist@5.32.8/swagger-ui.css',
+      customJs: [
+        'https://unpkg.com/swagger-ui-dist@5.32.8/swagger-ui-bundle.js',
+        'https://unpkg.com/swagger-ui-dist@5.32.8/swagger-ui-standalone-preset.js',
+      ],
+    });
 
     await app.init();
   })();

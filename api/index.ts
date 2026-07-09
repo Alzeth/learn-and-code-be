@@ -4,7 +4,7 @@ import { ExpressAdapter } from '@nestjs/platform-express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import express from 'express';
 
-import { AppModule } from '../src/app.module';
+import { AppModule } from '../dist/src/app.module';
 
 const expressApp = express();
 let nestReady: Promise<void> | null = null;

@@ -1,16 +1,15 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
-import { AuthModule } from 'src/auth/auth.module';
-import { CoursesModule } from 'src/courses/course.module';
-import { HealthModule } from 'src/health/health.module';
-import { LessonsModule } from 'src/lessons/lessons.module';
-import { PrismaModule } from 'src/prisma/prisma.module';
-import { ProgressModule } from 'src/progress/progress.module';
-import { UsersModule } from 'src/users/users.module';
-
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
+import { CoursesModule } from './courses/course.module';
+import { HealthModule } from './health/health.module';
+import { LessonsModule } from './lessons/lessons.module';
+import { PrismaModule } from './prisma/prisma.module';
+import { ProgressModule } from './progress/progress.module';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [

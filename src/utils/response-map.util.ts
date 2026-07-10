@@ -1,4 +1,4 @@
-import type { ResponseEntity, ResponseErrorEntity } from 'src/interfaces/response.entity';
+import type { ResponseEntity, ResponseErrorEntity } from '../interfaces/response.entity';
 
 export const responseMapping = <T>(
   data: T | null,

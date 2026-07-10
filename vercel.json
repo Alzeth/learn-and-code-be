@@ -1,9 +1,8 @@
 {
   "version": 2,
-  "buildCommand": "npx prisma generate && npm run build",
+  "buildCommand": "npx prisma generate",
   "functions": {
-    "api/index.js": {
-      "includeFiles": "dist/**",
+    "api/index.ts": {
       "memory": 1024,
       "maxDuration": 30
     }

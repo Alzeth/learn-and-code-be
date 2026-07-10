@@ -1,6 +1,10 @@
-'use strict';
+import { ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { ExpressAdapter } from '@nestjs/platform-express';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import express from 'express';
 
-const express = require('express');
+import { AppModule } from '../src/app.module';
 
 const CDN = 'https://unpkg.com/swagger-ui-dist@5.32.8';
 
@@ -31,26 +35,20 @@ const swaggerUiHtml = `<!DOCTYPE html>
 </html>`;
 
 const expressApp = express();
-let swaggerDoc = null;
+let swaggerDoc: Record<string, unknown> | null = null;
 
-expressApp.get('/api-json', (_req, res) => {
+expressApp.get('/api-json', (_req: express.Request, res: express.Response) => {
   res.json(swaggerDoc);
 });
-expressApp.get('/api', (_req, res) => {
+expressApp.get('/api', (_req: express.Request, res: express.Response) => {
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.send(swaggerUiHtml);
 });
 
-let nestReady = null;
+let nestReady: Promise<void> | null = null;
 
-function initNest() {
+function initNest(): Promise<void> {
   nestReady ??= (async () => {
-    const { NestFactory } = require('@nestjs/core');
-    const { ExpressAdapter } = require('@nestjs/platform-express');
-    const { ValidationPipe } = require('@nestjs/common');
-    const { DocumentBuilder, SwaggerModule } = require('@nestjs/swagger');
-    const { AppModule } = require('../dist/src/app.module');
-
     const app = await NestFactory.create(AppModule, new ExpressAdapter(expressApp), {
       logger: ['error', 'warn'],
     });
@@ -77,7 +75,7 @@ function initNest() {
   return nestReady;
 }
 
-module.exports = async (req, res) => {
+export default async function handler(req: express.Request, res: express.Response): Promise<void> {
   await initNest();
   expressApp(req, res);
-};
+}

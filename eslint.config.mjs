@@ -51,10 +51,9 @@ export default tseslint.config(
       'sort-imports': 'off',
       'simple-import-sort/imports': ['error', {
         groups: [
-          ['^\\u0000'],   // side-effect imports
-          ['^@?\\w'],     // external packages
-          ['^src/'],      // absolute src/ imports
-          ['^\\.'],       // relative imports
+          ['^\\u0000'],  // side-effect imports
+          ['^@?\\w'],    // external packages
+          ['^\\.'],      // relative imports
         ],
       }],
       'simple-import-sort/exports': 'error',

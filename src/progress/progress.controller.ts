@@ -1,12 +1,11 @@
 import { Controller, Get, NotFoundException, Param, Post, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
-import type { ResponseEntity } from 'src/interfaces/response.entity';
-import { responseMapping } from 'src/utils/response-map.util';
-
 import type { CurrentUserPayload } from '../auth/decorators/current-user.decorator';
 import { CurrentUser } from '../auth/decorators/current-user.decorator';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import type { ResponseEntity } from '../interfaces/response.entity';
+import { responseMapping } from '../utils/response-map.util';
 import type { LessonProgressDto, UserProgressDto } from './dto/progress.dto';
 import { ProgressService } from './progress.service';
 

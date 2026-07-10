@@ -1,10 +1,6 @@
-import { ValidationPipe } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
-import { ExpressAdapter } from '@nestjs/platform-express';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import express from 'express';
+'use strict';
 
-import { AppModule } from '../src/app.module';
+const express = require('express');
 
 const CDN = 'https://unpkg.com/swagger-ui-dist@5.32.8';
 
@@ -35,22 +31,26 @@ const swaggerUiHtml = `<!DOCTYPE html>
 </html>`;
 
 const expressApp = express();
+let swaggerDoc = null;
 
-let swaggerDoc: Record<string, any> | null = null;
-
-//Register Swagger routes before NestJS middleware so they take precedence
-expressApp.get('/api-json', (_req: express.Request, res: express.Response) => {
+expressApp.get('/api-json', (_req, res) => {
   res.json(swaggerDoc);
 });
-expressApp.get('/api', (_req: express.Request, res: express.Response) => {
+expressApp.get('/api', (_req, res) => {
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.send(swaggerUiHtml);
 });
 
-let nestReady: Promise<void> | null = null;
+let nestReady = null;
 
-function initNest(): Promise<void> {
+function initNest() {
   nestReady ??= (async () => {
+    const { NestFactory } = require('@nestjs/core');
+    const { ExpressAdapter } = require('@nestjs/platform-express');
+    const { ValidationPipe } = require('@nestjs/common');
+    const { DocumentBuilder, SwaggerModule } = require('@nestjs/swagger');
+    const { AppModule } = require('../dist/src/app.module');
+
     const app = await NestFactory.create(AppModule, new ExpressAdapter(expressApp), {
       logger: ['error', 'warn'],
     });
@@ -77,7 +77,7 @@ function initNest(): Promise<void> {
   return nestReady;
 }
 
-export default async function handler(req: express.Request, res: express.Response): Promise<void> {
+module.exports = async (req, res) => {
   await initNest();
   expressApp(req, res);
-}
+};

@@ -11,14 +11,20 @@ export class ResendProvider implements IEmailProvider {
   }
 
   async send(message: EmailMessage): Promise<void> {
-    const { error } = await this.client.emails.send({
-      from: message.from,
-      to: message.to,
-      subject: message.subject,
-      html: message.html,
-      text: message.text,
-    });
+    const result = message.templateId
+      ? await this.client.emails.send({
+          from: message.from,
+          to: message.to,
+          template: { id: message.templateId, variables: message.templateVariables ?? {} },
+        })
+      : await this.client.emails.send({
+          from: message.from,
+          to: message.to,
+          subject: message.subject ?? '',
+          html: message.html ?? '',
+          text: message.text ?? '',
+        });
 
-    if (error) throw new Error(`Resend delivery failed: ${error.message}`);
+    if (result.error) throw new Error(`Resend delivery failed: ${result.error.message}`);
   }
 }

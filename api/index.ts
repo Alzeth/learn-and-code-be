@@ -1,6 +1,7 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
+import type { OpenAPIObject } from '@nestjs/swagger';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import express from 'express';
 
@@ -35,7 +36,7 @@ const swaggerUiHtml = `<!DOCTYPE html>
 </html>`;
 
 const expressApp = express();
-let swaggerDoc: Record<string, unknown> | null = null;
+let swaggerDoc: OpenAPIObject | null = null;
 
 expressApp.get('/api-json', (_req: express.Request, res: express.Response) => {
   res.json(swaggerDoc);

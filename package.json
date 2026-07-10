@@ -1,7 +1,7 @@
 {
   "name": "learn-and-code-be",
   "homepage": "https://alzeth.github.io/learn-and-code/",
-  "version": "7.0.4",
+  "version": "7.0.5",
   "description": "Learning platform with code editor",
   "repository": {
     "type": "git",
@@ -59,7 +59,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^10.0.1",
-    "@nestjs/cli": "^11.0.23",
+    "@nestjs/cli": "^11.0.24",
     "@nestjs/schematics": "^11.1.0",
     "@nestjs/testing": "^11.1.28",
     "@types/bcryptjs": "^3.0.0",

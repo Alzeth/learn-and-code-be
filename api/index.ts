@@ -1,6 +1,7 @@
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
+import type { OpenAPIObject } from '@nestjs/swagger';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import express from 'express';
 
@@ -35,10 +36,8 @@ const swaggerUiHtml = `<!DOCTYPE html>
 </html>`;
 
 const expressApp = express();
+let swaggerDoc: OpenAPIObject | null = null;
 
-let swaggerDoc: Record<string, any> | null = null;
-
-//Register Swagger routes before NestJS middleware so they take precedence
 expressApp.get('/api-json', (_req: express.Request, res: express.Response) => {
   res.json(swaggerDoc);
 });

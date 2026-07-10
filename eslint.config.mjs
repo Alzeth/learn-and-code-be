@@ -49,7 +49,13 @@ export default tseslint.config(
 
       // Imports
       'sort-imports': 'off',
-      'simple-import-sort/imports': 'error',
+      'simple-import-sort/imports': ['error', {
+        groups: [
+          ['^\\u0000'],  // side-effect imports
+          ['^@?\\w'],    // external packages
+          ['^\\.'],      // relative imports
+        ],
+      }],
       'simple-import-sort/exports': 'error',
 
       // Prettier

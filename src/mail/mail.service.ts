@@ -20,19 +20,10 @@ export class MailService {
 
   async sendPasswordReset(to: string, token: string): Promise<void> {
     const resetUrl = `${this.appUrl}/reset-password?token=${token}`;
+    const templateId = this.config.get<string>('RESEND_TEMPLATE_RESET_PASSWORD') ?? '';
 
     await this.provider
-      .send({
-        from: this.from,
-        to,
-        subject: 'Reset your password',
-        text: `Use the link below to reset your password. It expires in 15 minutes.\n\n${resetUrl}\n\nIf you did not request this, ignore this email.`,
-        html: `
-          <p>Use the link below to reset your password. It expires in <strong>15 minutes</strong>.</p>
-          <p><a href="${resetUrl}">${resetUrl}</a></p>
-          <p>If you did not request this, ignore this email.</p>
-        `,
-      })
+      .send({ from: this.from, to, templateId, templateVariables: { resetUrl } })
       .catch((err: unknown) => {
         this.logger.error('Failed to send password reset email', err);
       });

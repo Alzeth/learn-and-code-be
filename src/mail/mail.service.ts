@@ -23,7 +23,7 @@ export class MailService {
     const templateId = this.config.get<string>('RESEND_TEMPLATE_RESET_PASSWORD') ?? '';
 
     await this.provider
-      .send({ from: this.from, to, templateId, templateVariables: { resetUrl } })
+      .send({ from: this.from, to, templateId, templateVariables: { RESET_URL: resetUrl } })
       .catch((err: unknown) => {
         this.logger.error('Failed to send password reset email', err);
       });

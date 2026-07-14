@@ -1,0 +1,29 @@
+{
+  "courses": [
+    {
+      "id": "py01",
+      "title": "Programmation",
+      "description": "Apprenez les fondamentaux de la programmation, notamment la syntaxe, la logique et les techniques de résolution de problèmes. Ce cours est conçu pour les débutants et couvre les éléments essentiels du codage."
+    },
+    {
+      "id": "py02",
+      "title": "Variables",
+      "description": "Comprenez comment stocker et gérer des données dans vos programmes à l'aide de variables. Ce cours couvre les types de variables, les conventions de nommage et les meilleures pratiques de stockage des données."
+    },
+    {
+      "id": "py03",
+      "title": "Conditions et boucles",
+      "description": "Maîtrisez le flux de contrôle de vos programmes avec des instructions conditionnelles et des boucles. Apprenez à prendre des décisions et à répéter des actions efficacement."
+    },
+    {
+      "id": "py04",
+      "title": "Fonctions",
+      "description": "Découvrez comment organiser votre code en blocs réutilisables avec des fonctions. Ce cours couvre la définition des fonctions, les arguments, les valeurs de retour et la portée."
+    },
+    {
+      "id": "py05",
+      "title": "Classes et objets",
+      "description": "Plongez dans la programmation orientée objet avec des classes et des objets. Apprenez à modéliser des entités du monde réel, à encapsuler des données et à créer des structures de code réutilisables."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "lessons": [
+    {
+      "href": "0111-1111-1111",
+      "title": "Lezione 1",
+      "description": "Impara a scrivere programmi semplici. Verifica la configurazione dell'ambiente di programmazione."
+    },
+    {
+      "href": "0222-2222-2222",
+      "title": "Lezione 2",
+      "description": "Studia le variabili e i tipi di dati. Scrivi un programma che visualizza un nome e un'età."
+    },
+    {
+      "href": "0333-3333-3333",
+      "title": "Lezione 3",
+      "description": "Impara le operazioni sui numeri. Crea una calcolatrice di addizione e sottrazione."
+    },
+    {
+      "href": "0444-4444-4444",
+      "title": "Lezione 4",
+      "description": "Studia gli operatori condizionali (if, else). Scrivi un programma che determina se un numero è pari."
+    },
+    {
+      "href": "0555-5555-5555",
+      "title": "Lezione 5",
+      "description": "Familiarizzati con i cicli (for, while). Crea un programma che conta da 1 a 10."
+    },
+    {
+      "href": "0666-6666-6666",
+      "title": "Lezione 6",
+      "description": "Impara le liste. Scrivi un programma che memorizza i nomi degli amici e li visualizza."
+    },
+    {
+      "href": "0777-7777-7777",
+      "title": "Lezione 7",
+      "description": "Familiarizzati con le funzioni. Crea una funzione che saluta un utente per nome."
+    },
+    {
+      "href": "0888-8888-8888",
+      "title": "Lezione 8",
+      "description": "Impara i dizionari. Scrivi un programma che memorizza informazioni sui giocattoli preferiti."
+    },
+    {
+      "href": "0999-9999-9999",
+      "title": "Lezione 9",
+      "description": "Impara la gestione degli errori. Scrivi un programma che chiede un numero e gestisce gli errori di input."
+    },
+    {
+      "href": "1010-1010-1010",
+      "title": "Lezione 10",
+      "description": "Crea il tuo piccolo progetto: il gioco 'Indovina il numero'."
+    }
+  ]
+}

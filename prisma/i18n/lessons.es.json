@@ -1,0 +1,54 @@
+{
+  "lessons": [
+    {
+      "href": "0111-1111-1111",
+      "title": "Lección 1",
+      "description": "Aprende a escribir programas simples. Verifica la configuración del entorno de programación."
+    },
+    {
+      "href": "0222-2222-2222",
+      "title": "Lección 2",
+      "description": "Estudia variables y tipos de datos. Escribe un programa que muestre un nombre y una edad."
+    },
+    {
+      "href": "0333-3333-3333",
+      "title": "Lección 3",
+      "description": "Aprende operaciones con números. Crea una calculadora de suma y resta."
+    },
+    {
+      "href": "0444-4444-4444",
+      "title": "Lección 4",
+      "description": "Estudia operadores condicionales (if, else). Escribe un programa que determine si un número es par."
+    },
+    {
+      "href": "0555-5555-5555",
+      "title": "Lección 5",
+      "description": "Familiarízate con los bucles (for, while). Crea un programa que cuente del 1 al 10."
+    },
+    {
+      "href": "0666-6666-6666",
+      "title": "Lección 6",
+      "description": "Aprende sobre listas. Escribe un programa que almacene nombres de amigos y los muestre."
+    },
+    {
+      "href": "0777-7777-7777",
+      "title": "Lección 7",
+      "description": "Familiarízate con las funciones. Crea una función que salude a un usuario por su nombre."
+    },
+    {
+      "href": "0888-8888-8888",
+      "title": "Lección 8",
+      "description": "Aprende sobre diccionarios. Escribe un programa que almacene información sobre juguetes favoritos."
+    },
+    {
+      "href": "0999-9999-9999",
+      "title": "Lección 9",
+      "description": "Aprende sobre el manejo de errores. Escribe un programa que pida un número y gestione los errores de entrada."
+    },
+    {
+      "href": "1010-1010-1010",
+      "title": "Lección 10",
+      "description": "Crea tu propio pequeño proyecto: el juego 'Adivina el número'."
+    }
+  ]
+}

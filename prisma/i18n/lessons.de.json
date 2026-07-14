@@ -1,0 +1,54 @@
+{
+  "lessons": [
+    {
+      "href": "0111-1111-1111",
+      "title": "Lektion 1",
+      "description": "Lerne, einfache Programme zu schreiben. Überprüfe die Einrichtung der Programmierumgebung."
+    },
+    {
+      "href": "0222-2222-2222",
+      "title": "Lektion 2",
+      "description": "Studiere Variablen und Datentypen. Schreibe ein Programm, das einen Namen und ein Alter ausgibt."
+    },
+    {
+      "href": "0333-3333-3333",
+      "title": "Lektion 3",
+      "description": "Lerne Operationen mit Zahlen. Erstelle einen Additions- und Subtraktionsrechner."
+    },
+    {
+      "href": "0444-4444-4444",
+      "title": "Lektion 4",
+      "description": "Studiere bedingte Operatoren (if, else). Schreibe ein Programm, das bestimmt, ob eine Zahl gerade ist."
+    },
+    {
+      "href": "0555-5555-5555",
+      "title": "Lektion 5",
+      "description": "Mache dich mit Schleifen (for, while) vertraut. Erstelle ein Programm, das von 1 bis 10 zählt."
+    },
+    {
+      "href": "0666-6666-6666",
+      "title": "Lektion 6",
+      "description": "Lerne über Listen. Schreibe ein Programm, das Freundesnamen speichert und ausgibt."
+    },
+    {
+      "href": "0777-7777-7777",
+      "title": "Lektion 7",
+      "description": "Mache dich mit Funktionen vertraut. Erstelle eine Funktion, die einen Benutzer mit Namen begrüßt."
+    },
+    {
+      "href": "0888-8888-8888",
+      "title": "Lektion 8",
+      "description": "Lerne über Wörterbücher. Schreibe ein Programm, das Informationen über Lieblingsspielzeug speichert."
+    },
+    {
+      "href": "0999-9999-9999",
+      "title": "Lektion 9",
+      "description": "Lerne über Fehlerbehandlung. Schreibe ein Programm, das nach einer Zahl fragt und Eingabefehler behandelt."
+    },
+    {
+      "href": "1010-1010-1010",
+      "title": "Lektion 10",
+      "description": "Erstelle dein eigenes kleines Projekt: das Spiel 'Zahlen raten'."
+    }
+  ]
+}

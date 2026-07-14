@@ -1,0 +1,29 @@
+{
+  "courses": [
+    {
+      "id": "py01",
+      "title": "Programmazione",
+      "description": "Impara i fondamenti della programmazione, tra cui sintassi, logica e tecniche di risoluzione dei problemi. Questo corso è pensato per i principianti e copre i mattoni essenziali della programmazione."
+    },
+    {
+      "id": "py02",
+      "title": "Variabili",
+      "description": "Capisci come memorizzare e gestire i dati nei tuoi programmi usando le variabili. Questo corso copre i tipi di variabili, le convenzioni di denominazione e le migliori pratiche per l'archiviazione dei dati."
+    },
+    {
+      "id": "py03",
+      "title": "Condizioni e cicli",
+      "description": "Padroneggia il flusso di controllo dei tuoi programmi con istruzioni condizionali e cicli. Impara a prendere decisioni e a ripetere azioni in modo efficiente."
+    },
+    {
+      "id": "py04",
+      "title": "Funzioni",
+      "description": "Scopri come organizzare il tuo codice in blocchi riutilizzabili con le funzioni. Questo corso copre la definizione di funzioni, gli argomenti, i valori di ritorno e l'ambito."
+    },
+    {
+      "id": "py05",
+      "title": "Classi e oggetti",
+      "description": "Immergiti nella programmazione orientata agli oggetti con classi e oggetti. Impara a modellare entità del mondo reale, incapsulare dati e creare strutture di codice riutilizzabili."
+    }
+  ]
+}

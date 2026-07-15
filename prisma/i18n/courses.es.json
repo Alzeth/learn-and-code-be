@@ -1,0 +1,29 @@
+{
+  "courses": [
+    {
+      "id": "py01",
+      "title": "Programación",
+      "description": "Aprende los fundamentos de la programación, incluyendo sintaxis, lógica y técnicas de resolución de problemas. Este curso está diseñado para principiantes y cubre los bloques de construcción esenciales de la programación."
+    },
+    {
+      "id": "py02",
+      "title": "Variables",
+      "description": "Comprende cómo almacenar y gestionar datos en tus programas usando variables. Este curso cubre los tipos de variables, las convenciones de nomenclatura y las mejores prácticas para el almacenamiento de datos."
+    },
+    {
+      "id": "py03",
+      "title": "Condiciones y bucles",
+      "description": "Domina el flujo de control de tus programas con sentencias condicionales y bucles. Aprende a tomar decisiones y repetir acciones de manera eficiente."
+    },
+    {
+      "id": "py04",
+      "title": "Funciones",
+      "description": "Descubre cómo organizar tu código en bloques reutilizables con funciones. Este curso cubre la definición de funciones, argumentos, valores de retorno y ámbito."
+    },
+    {
+      "id": "py05",
+      "title": "Clases y objetos",
+      "description": "Adéntrate en la programación orientada a objetos con clases y objetos. Aprende a modelar entidades del mundo real, encapsular datos y crear estructuras de código reutilizables."
+    }
+  ]
+}

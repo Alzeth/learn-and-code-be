@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "target": "ES2015",
     "module": "CommonJS",
     "moduleResolution": "node",
     "baseUrl": ".",

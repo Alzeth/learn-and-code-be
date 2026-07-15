@@ -1,0 +1,54 @@
+{
+  "lessons": [
+    {
+      "href": "0111-1111-1111",
+      "title": "Lekcja 1",
+      "description": "Naucz się pisać proste programy. Sprawdź konfigurację środowiska programistycznego."
+    },
+    {
+      "href": "0222-2222-2222",
+      "title": "Lekcja 2",
+      "description": "Poznaj zmienne i typy danych. Napisz program wyświetlający imię i wiek."
+    },
+    {
+      "href": "0333-3333-3333",
+      "title": "Lekcja 3",
+      "description": "Poznaj operacje na liczbach. Stwórz kalkulator dodawania i odejmowania."
+    },
+    {
+      "href": "0444-4444-4444",
+      "title": "Lekcja 4",
+      "description": "Poznaj operatory warunkowe (if, else). Napisz program sprawdzający, czy liczba jest parzysta."
+    },
+    {
+      "href": "0555-5555-5555",
+      "title": "Lekcja 5",
+      "description": "Zapoznaj się z pętlami (for, while). Stwórz program liczący od 1 do 10."
+    },
+    {
+      "href": "0666-6666-6666",
+      "title": "Lekcja 6",
+      "description": "Poznaj listy. Napisz program przechowujący imiona znajomych i wyświetlający je."
+    },
+    {
+      "href": "0777-7777-7777",
+      "title": "Lekcja 7",
+      "description": "Zapoznaj się z funkcjami. Stwórz funkcję witającą użytkownika po imieniu."
+    },
+    {
+      "href": "0888-8888-8888",
+      "title": "Lekcja 8",
+      "description": "Poznaj słowniki. Napisz program przechowujący informacje o ulubionych zabawkach."
+    },
+    {
+      "href": "0999-9999-9999",
+      "title": "Lekcja 9",
+      "description": "Poznaj obsługę błędów. Napisz program proszący o podanie liczby i obsługujący błędy wprowadzania."
+    },
+    {
+      "href": "1010-1010-1010",
+      "title": "Lekcja 10",
+      "description": "Stwórz własny mały projekt: grę 'Zgadnij liczbę'."
+    }
+  ]
+}

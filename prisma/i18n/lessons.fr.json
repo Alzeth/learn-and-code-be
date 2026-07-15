@@ -1,0 +1,54 @@
+{
+  "lessons": [
+    {
+      "href": "0111-1111-1111",
+      "title": "Leçon 1",
+      "description": "Apprenez à écrire des programmes simples. Vérifiez la configuration de l'environnement de programmation."
+    },
+    {
+      "href": "0222-2222-2222",
+      "title": "Leçon 2",
+      "description": "Étudiez les variables et les types de données. Écrivez un programme qui affiche un nom et un âge."
+    },
+    {
+      "href": "0333-3333-3333",
+      "title": "Leçon 3",
+      "description": "Apprenez les opérations sur les nombres. Créez une calculatrice d'addition et de soustraction."
+    },
+    {
+      "href": "0444-4444-4444",
+      "title": "Leçon 4",
+      "description": "Étudiez les opérateurs conditionnels (if, else). Écrivez un programme qui détermine si un nombre est pair."
+    },
+    {
+      "href": "0555-5555-5555",
+      "title": "Leçon 5",
+      "description": "Familiarisez-vous avec les boucles (for, while). Créez un programme qui compte de 1 à 10."
+    },
+    {
+      "href": "0666-6666-6666",
+      "title": "Leçon 6",
+      "description": "Apprenez les listes. Écrivez un programme qui stocke les noms d'amis et les affiche."
+    },
+    {
+      "href": "0777-7777-7777",
+      "title": "Leçon 7",
+      "description": "Familiarisez-vous avec les fonctions. Créez une fonction qui salue un utilisateur par son nom."
+    },
+    {
+      "href": "0888-8888-8888",
+      "title": "Leçon 8",
+      "description": "Apprenez les dictionnaires. Écrivez un programme qui stocke des informations sur les jouets préférés."
+    },
+    {
+      "href": "0999-9999-9999",
+      "title": "Leçon 9",
+      "description": "Apprenez la gestion des erreurs. Écrivez un programme qui demande un nombre et gère les erreurs de saisie."
+    },
+    {
+      "href": "1010-1010-1010",
+      "title": "Leçon 10",
+      "description": "Créez votre propre petit projet : le jeu 'Devinez le nombre'."
+    }
+  ]
+}

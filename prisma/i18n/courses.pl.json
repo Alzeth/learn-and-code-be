@@ -1,0 +1,29 @@
+{
+  "courses": [
+    {
+      "id": "py01",
+      "title": "Programowanie",
+      "description": "Poznaj podstawy programowania, w tym składnię, logikę i techniki rozwiązywania problemów. Ten kurs jest przeznaczony dla początkujących i obejmuje podstawowe elementy programowania."
+    },
+    {
+      "id": "py02",
+      "title": "Zmienne",
+      "description": "Zrozum, jak przechowywać dane i zarządzać nimi w programach za pomocą zmiennych. Kurs obejmuje typy zmiennych, konwencje nazewnictwa i najlepsze praktyki przechowywania danych."
+    },
+    {
+      "id": "py03",
+      "title": "Warunki i pętle",
+      "description": "Opanuj przepływ sterowania programów za pomocą instrukcji warunkowych i pętli. Naucz się podejmować decyzje i efektywnie powtarzać działania."
+    },
+    {
+      "id": "py04",
+      "title": "Funkcje",
+      "description": "Odkryj, jak organizować kod w wielokrotnego użytku bloki za pomocą funkcji. Kurs obejmuje definicję funkcji, argumenty, wartości zwracane i zakres."
+    },
+    {
+      "id": "py05",
+      "title": "Klasy i obiekty",
+      "description": "Zanurz się w programowanie obiektowe z klasami i obiektami. Naucz się modelować rzeczywiste byty, hermetyzować dane i tworzyć wielokrotnego użytku struktury kodu."
+    }
+  ]
+}

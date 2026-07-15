@@ -7,44 +7,59 @@ import { LessonDto, LessonsResponseDto } from './dto/lesson.dto';
 export class LessonsService {
   constructor(private prisma: PrismaService) {}
 
-  async findAll(): Promise<LessonsResponseDto> {
+  async findAll(locale: string): Promise<LessonsResponseDto> {
     const lessons = await this.prisma.lesson.findMany({
       orderBy: { createdAt: 'asc' },
+      include: { translations: { where: { locale } } },
     });
 
     return {
-      lessons: lessons.map((lesson): LessonDto => this.toDto(lesson)),
+      lessons: lessons.map((lesson): LessonDto => {
+        const t = lesson.translations[0];
+        return this.toDto(lesson, t, locale);
+      }),
     };
   }
 
-  async findOne(id: string): Promise<LessonDto | null> {
-    const lesson = await this.prisma.lesson.findUnique({ where: { id } });
-    if (!lesson) return null;
-    return this.toDto(lesson);
-  }
-
-  async findTheory(id: string): Promise<string | null> {
+  async findOne(id: string, locale: string): Promise<LessonDto | null> {
     const lesson = await this.prisma.lesson.findUnique({
       where: { id },
-      select: { theoryMd: true },
+      include: { translations: { where: { locale } } },
     });
-    return lesson?.theoryMd ?? null;
+    if (!lesson) return null;
+    return this.toDto(lesson, lesson.translations[0], locale);
   }
 
-  private toDto(lesson: {
-    id: string;
-    title: string;
-    description: string | null;
-    icon: string | null;
-    date: Date | null;
-  }): LessonDto {
+  async findTheory(id: string, locale: string): Promise<string | null> {
+    const lesson = await this.prisma.lesson.findUnique({
+      where: { id },
+      select: {
+        theoryMd: true,
+        translations: { where: { locale }, select: { theoryMd: true } },
+      },
+    });
+    if (!lesson) return null;
+    return lesson.translations[0]?.theoryMd ?? lesson.theoryMd;
+  }
+
+  private toDto(
+    lesson: {
+      id: string;
+      title: string;
+      description: string | null;
+      icon: string | null;
+      date: Date | null;
+    },
+    translation: { title: string; description: string | null } | undefined,
+    locale: string,
+  ): LessonDto {
     return {
       id: lesson.id,
-      title: lesson.title,
+      title: translation?.title ?? lesson.title,
       href: `/lessons/${lesson.id}`,
-      description: lesson.description ?? '',
+      description: translation?.description ?? lesson.description ?? '',
       date:
-        lesson.date?.toLocaleDateString('en-US', {
+        lesson.date?.toLocaleDateString(locale, {
           year: 'numeric',
           month: 'long',
           day: 'numeric',

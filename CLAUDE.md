@@ -1,5 +1,5 @@
 # CLAUDE.md — learn-and-code-be
-NestJS backend for a coding learning platform. Deployed on Railway. Frontend is Angular, hosted on GitHub Pages at `https://alzeth.github.io/learn-and-code/`.
+NestJS backend for a coding learning platform. Deployed on Vercel, database on Supabase (PostgreSQL). Frontend is Angular, hosted on GitHub Pages at `https://alzeth.github.io/learn-and-code/`.
 
 ## Commands
 ```bash
@@ -49,7 +49,6 @@ All endpoints return `ResponseEntity<T>` via `responseMapping()`:
 
 ### Mail module
 Provider-switched via `MAIL_PROVIDER` env var (`"resend"` default, `"smtp"` for Nodemailer).
-To add a new provider: implement `IEmailProvider` in `src/mail/providers/`, add a branch in `src/mail/mail.module.ts` factory. See `docs/email-provider-guide.md`.
 
 ## TypeScript gotchas
 **No `.js` extensions in imports.** The project uses `"module": "nodenext"` but `ts-jest` compiles to CommonJS and cannot resolve `.js` → `.ts`. Write `import { X } from './foo'` not `import { X } from './foo.js'`. All existing files follow this — match them.
@@ -78,9 +77,10 @@ import type { IEmailProvider } from './interfaces/email-provider.interface';
 | `SMTP_HOST/PORT/USER/PASS` | SMTP credentials (when `MAIL_PROVIDER=smtp`) |
 
 ## Deployment
-- Platform: **Railway** — auto-deploys on push to `main`
-- Container: `Dockerfile` builds the app, `CMD` runs `prisma migrate deploy` then starts the server
-- Swagger UI available at `/api` on the running server
+- Platform: **Vercel** — auto-deploys on push to `main`
+- Database: **Supabase** (PostgreSQL) — set `DATABASE_URL` in Vercel environment variables
+- Entry point: `api/index.ts` (serverless, `ExpressAdapter`) — `vercel.json` runs `prisma generate && prisma migrate deploy` at build time
+- Swagger UI available at `/api` — served via CDN assets (no local `swagger-ui-dist` in the lambda bundle)
 - CORS: currently open (`origin: '*'`), intended to be restricted to `https://alzeth.github.io`
 
 ## NestJS best practices

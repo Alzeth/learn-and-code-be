@@ -1,0 +1,29 @@
+{
+  "courses": [
+    {
+      "id": "py01",
+      "title": "Programmierung",
+      "description": "Lerne die Grundlagen der Programmierung, einschließlich Syntax, Logik und Problemlösungstechniken. Dieser Kurs ist für Anfänger konzipiert und behandelt die wesentlichen Bausteine des Programmierens."
+    },
+    {
+      "id": "py02",
+      "title": "Variablen",
+      "description": "Verstehe, wie du Daten in deinen Programmen mit Variablen speicherst und verwaltest. Dieser Kurs behandelt Variablentypen, Namenskonventionen und Best Practices für die Datenspeicherung."
+    },
+    {
+      "id": "py03",
+      "title": "Bedingungen und Schleifen",
+      "description": "Meistere den Kontrollfluss deiner Programme mit bedingten Anweisungen und Schleifen. Lerne, wie du Entscheidungen triffst und Aktionen effizient wiederholst."
+    },
+    {
+      "id": "py04",
+      "title": "Funktionen",
+      "description": "Entdecke, wie du deinen Code mit Funktionen in wiederverwendbare Blöcke organisierst. Dieser Kurs behandelt Funktionsdefinition, Argumente, Rückgabewerte und Gültigkeitsbereiche."
+    },
+    {
+      "id": "py05",
+      "title": "Klassen und Objekte",
+      "description": "Tauche in die objektorientierte Programmierung mit Klassen und Objekten ein. Lerne, wie du reale Entitäten modellierst, Daten kapselst und wiederverwendbare Code-Strukturen erstellst."
+    }
+  ]
+}

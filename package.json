@@ -1,7 +1,7 @@
 {
   "name": "learn-and-code-be",
   "homepage": "https://alzeth.github.io/learn-and-code/",
-  "version": "9.2.1",
+  "version": "9.3.0",
   "description": "Learning platform with code editor",
   "repository": {
     "type": "git",
@@ -87,7 +87,7 @@
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.62.1"
+    "typescript-eslint": "^8.65.0"
   },
   "lint-staged": {
     "*.ts": [

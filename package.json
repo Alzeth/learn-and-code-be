@@ -1,7 +1,7 @@
 {
   "name": "learn-and-code-be",
   "homepage": "https://alzeth.github.io/learn-and-code/",
-  "version": "9.4.1",
+  "version": "9.4.2",
   "description": "Learning platform with code editor",
   "repository": {
     "type": "git",
@@ -52,7 +52,7 @@
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.2.2",
-    "resend": "^6.18.0",
+    "resend": "^6.18.1",
     "rxjs": "^7.8.1",
     "tsx": "^4.23.0"
   },

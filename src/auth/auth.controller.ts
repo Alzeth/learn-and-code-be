@@ -1,8 +1,20 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Post, UseGuards } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  NotFoundException,
+  Patch,
+  Post,
+  UseGuards,
+} from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 import type { ResponseEntity } from '../interfaces/response.entity';
-import { UserDto } from '../users/dto/user.dto';
+import { UpdateProfileDto } from '../users/dto/update-profile.dto';
+import type { UserDto } from '../users/dto/user.dto';
+import { UsersService } from '../users/users.service';
 import { responseMapping } from '../utils/response-map.util';
 import { AuthService } from './auth.service';
 import type { CurrentUserPayload } from './decorators/current-user.decorator';
@@ -17,7 +29,10 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard';
 @ApiTags('auth')
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly usersService: UsersService,
+  ) {}
 
   @Post('register')
   async register(@Body() dto: RegisterDto): Promise<ResponseEntity<AuthResponseDto>> {
@@ -55,7 +70,21 @@ export class AuthController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('me')
-  me(@CurrentUser() user: CurrentUserPayload): ResponseEntity<UserDto> {
-    return responseMapping(user, null);
+  async me(@CurrentUser() user: CurrentUserPayload): Promise<ResponseEntity<UserDto>> {
+    const found = await this.usersService.findById(user.id);
+    if (!found) throw new NotFoundException('User not found');
+    return responseMapping(this.usersService.toDto(found), null);
+  }
+
+  @ApiOperation({ summary: 'Update current user profile' })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @Patch('me')
+  async updateProfile(
+    @CurrentUser() user: CurrentUserPayload,
+    @Body() dto: UpdateProfileDto,
+  ): Promise<ResponseEntity<UserDto>> {
+    const updated = await this.usersService.updateProfile(user.id, dto);
+    return responseMapping(this.usersService.toDto(updated), null);
   }
 }

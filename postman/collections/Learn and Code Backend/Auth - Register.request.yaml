@@ -4,5 +4,5 @@ url: "{{base_url}}/auth/register"
 method: POST
 body:
   type: json
-  content: '{"email": "user@example.com", "password": "password123"}'
+  content: '{"email": "user@example.com", "password": "password123", "firstName": "John", "lastName": "Doe", "bio": "Software developer", "address": "Kyiv, Ukraine", "occupation": "Engineer"}'
 order: 4285925738003707

@@ -1,0 +1,10 @@
+$kind: http-request
+name: Auth - Update Profile
+url: "{{base_url}}/auth/me"
+method: PATCH
+headers:
+  Authorization: Bearer {{access_token}}
+body:
+  type: json
+  content: '{"firstName": "John", "lastName": "Doe", "bio": "Software developer", "address": "Kyiv, Ukraine", "occupation": "Engineer"}'
+order: 4862900523125426

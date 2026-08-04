@@ -29,11 +29,17 @@ export class AuthService {
     if (existing) throw new ConflictException('Email already in use');
 
     const passwordHash = await bcrypt.hash(dto.password, 10);
-    const user = await this.users.create(dto.email, passwordHash);
+    const user = await this.users.create(dto.email, passwordHash, {
+      firstName: dto.firstName,
+      lastName: dto.lastName,
+      bio: dto.bio,
+      address: dto.address,
+      occupation: dto.occupation,
+    });
 
     return {
       accessToken: this.signToken(user.id, user.email),
-      user: { id: user.id, email: user.email },
+      user: this.users.toDto(user),
     };
   }
 
@@ -46,7 +52,7 @@ export class AuthService {
 
     return {
       accessToken: this.signToken(user.id, user.email),
-      user: { id: user.id, email: user.email },
+      user: this.users.toDto(user),
     };
   }
 
